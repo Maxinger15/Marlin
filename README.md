@@ -1,3 +1,16 @@
+Modified for a complete modified Anycubic Chiron.
+
+- e3D Titan Aero extruder
+- BigTreeTech SKR 1.4 Turbo
+- TMC 2209 Stepper driver
+- BLTouch
+
+Enabled Marlin Features:
+- S-Curve
+- BLTouch Bed UBL
+- G34 Z_STEPPER_AUTO_ALIGN
+- Pid Hotend/Bed temperature
+
 # Marlin 3D Printer Firmware
 
 ![GitHub](https://img.shields.io/github/license/marlinfirmware/marlin.svg)
