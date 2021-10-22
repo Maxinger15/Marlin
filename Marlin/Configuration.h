@@ -1682,13 +1682,32 @@
  *   M501 - Read settings from EEPROM. (i.e., Throw away unsaved changes)
  *   M502 - Revert settings to "factory" defaults. (Follow with M500 to init the EEPROM.)
  */
-#define EEPROM_SETTINGS     // Persistent storage with M500 and M501
+/*#define EEPROM_SETTINGS     // Persistent storage with M500 and M501
 //#define DISABLE_M503        // Saves ~2700 bytes of PROGMEM. Disable for release!
 #define EEPROM_CHITCHAT       // Give feedback on EEPROM commands. Disable to save PROGMEM.
 #define EEPROM_BOOT_SILENT    // Keep M503 quiet and only give errors during first load
 #if ENABLED(EEPROM_SETTINGS)
   //#define EEPROM_AUTO_INIT  // Init EEPROM automatically on any errors.
 #endif
+
+#define I2C_EEPROM                                // Use external EEPROM Module (e.g. AT24C256) connected to I2C Pins as outlined at https://www.instructables.com/id/BigTreeTech-SKR-Pro-V11-Adding-a-EEPROM/
+#ifdef I2C_EEPROM                   // Use Platform-independent Arduino functions for I2C EEPROM
+  #undef E2END                                    // Defined in Arduino Core STM32 to be used with EEPROM emulation. However a real EEPROM to be used
+  #define E2END 0x7FFF                            // EEPROM end address AT24C256 (32kB)
+#endif*/
+
+#define EEPROM_SETTINGS       // Persistent storage with M500 and M501
+//#define DISABLE_M503        // Saves ~2700 bytes of PROGMEM. Disable for release!
+#define EEPROM_CHITCHAT       // Give feedback on EEPROM commands. Disable to save PROGMEM.
+#if ENABLED(EEPROM_SETTINGS)
+   //#define EEPROM_AUTO_INIT  // Init EEPROM automatically on any errors.
+#endif
+#define I2C_EEPROM
+#ifdef MARLIN_EEPROM_SIZE
+   #undef MARLIN_EEPROM_SIZE<br>
+#endif
+// uncomment the size of EEPROM you are using.
+#define MARLIN_EEPROM_SIZE 0x7FFF // EEPROM end address AT24C256 (32kB)
 
 //
 // Host Keepalive
