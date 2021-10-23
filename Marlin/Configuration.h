@@ -815,7 +815,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 79.95, 99.90, 416.35, 413.30 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 270.28, 413.15, 816.37, 413.30 }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -1071,7 +1071,7 @@
 #define PROBING_MARGIN 15
 
 // X and Y axis travel speed (mm/min) between probes
-#define XY_PROBE_FEEDRATE (50*60)
+#define XY_PROBE_FEEDRATE (60*60)
 
 // Feedrate (mm/min) for the first approach when double-probing (MULTIPLE_PROBING == 2)
 #define Z_PROBE_FEEDRATE_FAST HOMING_FEEDRATE_Z
@@ -1115,8 +1115,8 @@
  * A total of 2 does fast/slow probes with a weighted average.
  * A total of 3 or more adds more slow probes, taking the average.
  */
-#define MULTIPLE_PROBING 2
-//#define EXTRA_PROBING    1
+#define MULTIPLE_PROBING 3
+#define EXTRA_PROBING    2
 
 /**
  * Z probes require clearance when deploying, stowing, and moving between
@@ -1230,7 +1230,7 @@
 #define Z_HOMING_HEIGHT  4      // (mm) Minimal Z height before homing (G28) for Z clearance above the bed, clamps, ...
                                   // Be sure to have this much clearance over your Z_MAX_POS to prevent grinding.
 
- #define Z_AFTER_HOMING  8      // (mm) Height to move to after homing Z
+ //#define Z_AFTER_HOMING  0      // (mm) Height to move to after homing Z
 
 // Direction of endstops when homing; 1=MAX, -1=MIN
 // :[-1,1]
@@ -1599,13 +1599,13 @@
 #define Z_SAFE_HOMING
 
 #if ENABLED(Z_SAFE_HOMING)
-  #define Z_SAFE_HOMING_X_POINT X_CENTER-25  // X point for Z homing
+  #define Z_SAFE_HOMING_X_POINT X_CENTER-20  // X point for Z homing
   #define Z_SAFE_HOMING_Y_POINT Y_CENTER  // Y point for Z homing
 #endif
 
 // Homing speeds (mm/min)
-#define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (9*60) }
-#define HOMING_FEEDRATE_Z  (9*60)
+#define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (10*60) }
+#define HOMING_FEEDRATE_Z  (20*60)
 #define HOMING_FEEDRATE_XY (50*60) 
 // Validate that endstops are triggered on homing moves
 #define VALIDATE_HOMING_ENDSTOPS
